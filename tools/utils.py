@@ -27,13 +27,13 @@ class PredictionsDumper():
         return self
     def __call__(self, view_key, prediction: float):
         self.predictions.append({
-            "arena_label": view_key.arena_label,
-            "game_id": view_key.game_id,
-            "timestamp": view_key.timestamp,
-            "camera": view_key.camera,
-            "index": view_key.index,
+            "arena_label": view_key.arena_label[0],
+            "game_id": view_key.game_id.item(),
+            "timestamp": view_key.timestamp.item(),
+            "camera": view_key.camera.item(),
+            "index": view_key.index.item(),
             "prediction": prediction
         })
-    def __exit__(self ,type, value, traceback):
+    def write(self):
         json.dump(self.predictions, open(self.filename, "w"))
         print(f"{self.filename} successfully written")

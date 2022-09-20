@@ -5,3 +5,6 @@ __pycache__
 
 challenge_set_predictions.json
 testing_set_predictions.json
+
+basketball-instants-dataset
+output
